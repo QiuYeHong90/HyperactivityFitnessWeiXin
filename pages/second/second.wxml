@@ -1,0 +1,12 @@
+<!--<button bindtap="record">录音</button>
+-->
+<block wx:for="{{obj.data}}">
+    <navigator url="articleList/articleList?ArticleMenuID={{item.ArticleMenuID}}&&MenuName={{item.MenuName}}" >
+        <view style="background-image: url({{item.Img}})  " class="articleBG">
+        </view>
+    </navigator>
+
+</block>
+
+
+<!--article/cc54c3d3-4b99-4594-b250-8c199624f9e7.jpg-->

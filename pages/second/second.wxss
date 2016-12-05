@@ -1,0 +1,11 @@
+
+.articleBG{
+    width: 100%;
+    height:120px;
+    background-size: 100% 120px;
+    background-position: center center;
+    background-origin:initial;
+}
+navigator{
+    margin-bottom: 10px;
+}

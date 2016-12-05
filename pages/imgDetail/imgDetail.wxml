@@ -1,0 +1,9 @@
+<swiper class="swiperImg" indicator-dots="{{ture}}">
+<block  wx:for="{{imgArray}}" wx:key="{{ImageID}}" wx:for-itemitem="dataList" >
+
+
+<swiper-item>
+<image src="http://www.8848fit.com/microweb/file/{{item.Thumbnail}}"></image>
+</swiper-item>
+</block>
+</swiper>

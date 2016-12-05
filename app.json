@@ -1,0 +1,61 @@
+{
+    "pages": [
+        
+        "pages/userCenter/userCenter",
+        "pages/first/first",
+        "pages/second/second",
+        "pages/index/index",
+        "pages/imgDetail/imgDetail",
+        "pages/record/record",
+        "pages/second/articleList/articleList",
+        "pages/second/articleDetail/articleDetail"
+    ],
+    "window": {
+      
+        "navigationBarTextStyle": "white",
+        "navigationBarBackgroundColor": "black",
+        "navigationBarTitleText": "",
+        "backgroundColor": "#bdbdbd", 
+        "enablePullDownRefresh": true, 
+        "backgroundTextStyle": "dark"
+    },
+    "tabBar": {
+        "color": "#333333",
+        "selectedColor": "#ff0000",
+        "borderStyle": "black",
+        "backgroundColor": "black",
+        "list": [
+            {
+                "pagePath": "pages/userCenter/userCenter",
+                "text": "",
+                "iconPath": "images/tabbar/tabbar_01.imageset/tabbar_01@3x.png",
+                "selectedIconPath": "images/tabbar/tabbar_01select.imageset/tabbar_01select@3x.png"
+            },
+            {
+                "pagePath": "pages/first/first",
+                "text": "",
+                "iconPath": "images/tabbar/tabbar_02.imageset/tabbar_02@3x.png",
+                "selectedIconPath": "images/tabbar/tabbar_02select.imageset/tabbar_02select@3x.png"
+            },
+            {
+                "pagePath": "pages/second/second",
+                "text": "",
+                "iconPath": "images/tabbar/tabbar_03.imageset/tabbar_03@3x.png",
+                "selectedIconPath": "images/tabbar/tabbar_03select.imageset/tabbar_03select@3x.png"
+            },
+            {
+                "pagePath": "pages/index/index",
+                "text":"",
+                "iconPath": "images/tabbar/tabbar_04.imageset/tabbar_04@3x.png",
+                "selectedIconPath": "images/tabbar/tabbar_04select.imageset/tabbar_04select@3x.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "debug": "true"
+}

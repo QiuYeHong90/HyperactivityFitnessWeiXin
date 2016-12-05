@@ -1,0 +1,73 @@
+
+<block wx:for="{{obj.data}}">
+    <view class="videoTypeItem" wx:if="{{item.ArticleType==1}}" bindtap="videoTap" data-index="{{index}}">
+ 
+         <text class="titleFont">{{item.Title}}</text>
+
+             <image src="{{item.ListPic}}" class="imgView"></image>
+         
+        
+        <view style="width:100%; border-bottom: 1px solid #dddddd;">
+        
+        <text class="bottomFont">{{item.Source}} {{item.Mark}}评论 {{item.PublishTime}} </text>
+        <text class="bottomFont"  style="border:1px solid #0eaaed ; color: #0eaaed;border-radius:20%;padding:1px 2px 1px;">视频</text>
+        </view>
+    </view>
+
+    <view class="videoTypeItem ArticleType_2content " wx:if="{{item.ArticleType==2}}" bindtap="webViewTap" data-url="{{item.SourceUrl}}">
+        <view style="width:18rem;display:flex;flex-wrap: wrap;justify-content:space-between">
+            <view class="ArticleType2">
+                 <text class="titleFont ArticleType2">{{item.Title}}</text>
+            </view>
+             <image src="{{item.ListPic}}" class="imgView ArticleType2Img "></image>
+            
+            
+        </view>
+        <view style="width:100%; border-bottom: 1px solid #dddddd;">
+            <text class="bottomFont">{{item.Source}} {{item.Mark}}评论 {{item.PublishTime}}</text>
+        </view>
+         
+         
+    </view>
+
+    <view class="videoTypeItem ArticleType_2content " wx:if="{{item.ArticleType==3}}">
+        <view style="width:18rem;display:flex;flex-wrap: wrap;justify-content:space-between">
+            <view class="ArticleType2">
+                 <text class="titleFont ArticleType2">{{item.Title}}</text>
+            </view>
+             <image src="{{item.ListPic}}" class="imgView ArticleType2Img "></image>
+            
+            
+        </view>
+        <view style="width:100%; border-bottom: 1px solid #dddddd;">
+            <text class="bottomFont">{{item.Source}} {{item.Mark}}评论 {{item.PublishTime}}</text>
+        </view>
+         
+    </view>
+
+    
+    <view class="videoTypeItem ArticleType_2content " wx:if="{{item.ArticleType==4}}">
+        <view style="width:18rem;display:flex;flex-wrap: wrap;justify-content:space-between">
+            <view class="ArticleType2">
+                 <text class="titleFont ArticleType2">{{item.Title}}</text>
+            </view>
+
+            <view class="type_4imgView" bindtap="playVoice" data-voice="{{item.Voice}}" data-index="{{index}}">
+            <image mode="scaleToFill" src="{{index==voiceIndex ? VocieImgUrl:'../../../images/news/news_voicenormal.imageset/news_voicenormal@2x.png'}}" class="imgView ArticleType2Img articleType4img" >
+            </image>
+            </view>
+            
+            
+            
+        </view >
+        <view style="width:100%; border-bottom: 1px solid #dddddd;">
+        
+        <text class="bottomFont">{{item.Source}} {{item.Mark}}评论 {{item.PublishTime}} </text>
+        <text class="bottomFont"  style="border:1px solid  #0eaaed ;color: #0eaaed; border-radius:20%;padding:1px 2px 1px;">语音</text>
+        </view>
+         
+         
+    </view>
+
+
+</block>

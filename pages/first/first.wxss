@@ -1,0 +1,189 @@
+/* pages/first/first.wxss */
+.topic_scrollView{
+    background-color: #dddddd;
+    width: 100%;
+    /*height: 30rem;*/
+    padding-bottom: 0px;
+}
+
+.Type_1{
+    background-color: white;
+    width: 100%;
+    /*min-height: 150px;*/
+    padding: 0px 1rem 20px;
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+
+}
+.item_type1{
+    /*background-color: yellow;*/
+    width: 8.5rem;
+    height: 4rem;
+    margin-top: 10px;
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    align-items: center;
+    text-align: center;
+/*设为容器让控件居中显示*/
+    display:flex;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+.text_type1{
+    display: block;
+    font-size: 0.7rem;
+    color: white;
+
+    
+}
+
+.item_type-1{
+    width: 100%;
+    height: 2rem;
+    align-items: center;
+    display: flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+}
+
+.Type_2{
+    margin-top: 10px;
+    padding: 0px 0rem 0px;
+}
+
+
+.text_type-1{
+    
+    width: 100%;
+    text-align: left;
+    color: #333333;
+    
+    text-indent: 1rem;
+}
+
+.item_type2{
+    width: 10rem;
+    height: 2rem;
+    margin-top: 0px;
+    border-top: 1px solid #dddddd;
+    /*background-color: blue;*/
+}
+
+
+.dynamic_cell{
+    background-color: #dddddd;
+    width: 100%;
+    /*min-height: 200px;*/
+
+
+}
+.dynamic_cell_userimg{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: 2px solid #0eaaed;
+    margin-top: 1.5rem;
+    margin-left: 0.8rem;
+    
+
+}
+.content_cellView{
+    background-color: white;
+    width: 17.5rem;
+    /*min-height: 20rem;*/
+    margin-top: -5rem;
+    margin-left: 2rem;
+    padding: 1rem 0rem 2rem;
+    
+
+
+}
+
+.text_content{
+    display: block;
+    
+    margin-left: 3.4rem;
+}
+.userName_text{
+    font-size: 1rem;
+}
+.time_text{
+    display:inline-block;
+    font-size: 0.7rem;
+}
+
+.contentView_gray{
+    /*width: 80%;*/
+    /*height: 200px;*/
+    background-color: #f4f4f4;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    /*margin-bottom: 2rem;*/
+
+    padding:0rem 1rem 0rem;
+
+}
+
+
+/*.content_text{
+    margin-top: 1rem;
+}*/
+
+.bottom_gray{
+    height: 4rem;
+    width: 17.5rem;
+    margin-top: 0;
+
+    align-items: center;
+   vertical-align: middle;
+   line-height: 4rem;
+    
+
+}
+.pinglun{
+    display: inline-block;
+    margin-left: 1rem;
+    vertical-align: middle;
+}
+.pinglunText{
+    position: relative;
+    top: -2px;
+    left: 10px;
+
+}
+.District{
+    display:inline-block;
+    position: relative;
+    left: 1rem;
+   
+}
+
+.imgContent{
+   
+    
+  
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:inherit;
+    margin-left: -1rem;
+    margin-right: -1rem
+    ;
+}
+.img_item{
+    width:13.5rem;
+    position: relative;
+    
+
+}
+
+.loadmore{
+    /*background: white;*/
+    height: 44px;
+    width: 100%;
+    text-align: center;
+    line-height: 44px;
+}

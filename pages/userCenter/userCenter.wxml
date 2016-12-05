@@ -1,0 +1,197 @@
+
+
+
+
+
+
+
+<view class="hearder_view">
+<!--成功的个数-->
+<view class="itemContent">
+<canvas canvas-id="numberOfSuccess" style="width:100px;height:100px;">
+<text class="text_item centerText">{{headArr[0].num}}</text>
+<text class="text_item centerText">{{headArr[0].unit}}</text>
+</canvas>
+
+<text class="text_item">{{headArr[0].name}}</text>
+</view>
+<!--目标成功率-->
+<view class="itemContent">
+<view class="cavas_view">
+<canvas canvas-id="numberOfSuccess1" style="width:100px;height:100px;">
+<text class="text_item centerText">{{headArr[1].num}}</text>
+<text class="text_item centerText">{{headArr[1].unit}}</text>
+</canvas>
+</view>
+
+<text class="text_item">{{headArr[1].name}}</text>
+</view>
+
+<!--坚持天数-->
+<view class="itemContent">
+<canvas canvas-id="numberOfSuccess2" style="width:100px;height:100px;">
+<text class="text_item centerText">{{headArr[2].num}}</text>
+<text class="text_item centerText">{{headArr[2].unit}}</text>
+</canvas>
+<text class="text_item">{{headArr[2].name}}</text>
+</view>
+
+</view>
+<view>
+<!--日-->
+<text>每日</text>
+<block wx:for="{{goalList}}">
+
+
+<view class="goalContent" wx:if="{{item.Cycle==0}}">
+<image src="src" style="background-color:yellow;width:2rem;height:2rem;display:block;"></image>
+<!--文字内容-->
+<view>
+
+<view style="width:10rem">
+<text>{{item.GoalName}}
+</text>
+</view>
+
+<view style="width:10rem ;background-color:red">
+<text>{{item.MyGoalValue}}/{{item.GoalValue}}
+</text>
+</view>
+
+
+</view>
+
+<!--百分比-->
+<view style="width:5rem ;background-color:red">
+{{item.successRate}}%
+</view>
+
+</view>
+
+
+
+</block>
+</view>
+
+
+
+<view>
+<!--周-->
+<text>每周</text>
+<block wx:for="{{goalList}}">
+
+
+<view class="goalContent" wx:if="{{item.Cycle==2}}">
+<image src="src" style="background-color:yellow;width:2rem;height:2rem;display:block;"></image>
+<!--文字内容-->
+<view>
+
+<view style="width:10rem">
+<text>{{item.GoalName}}
+</text>
+</view>
+
+<view style="width:10rem ;background-color:red">
+<text>{{item.MyGoalValue}}/{{item.GoalValue}}
+</text>
+</view>
+
+
+</view>
+
+<!--百分比-->
+<view style="width:5rem ;background-color:red">
+{{item.successRate}}%
+</view>
+
+</view>
+
+
+
+</block>
+
+
+</view>
+
+<view>
+<!--月-->
+<text>每月</text>
+<block wx:for="{{goalList}}">
+
+
+<view class="goalContent" wx:if="{{item.Cycle==1}}">
+<image src="src" style="background-color:yellow;width:2rem;height:2rem;display:block;"></image>
+<!--文字内容-->
+<view>
+
+<view style="width:10rem">
+<text>{{item.GoalName}}
+</text>
+</view>
+
+<view style="width:10rem ;background-color:red">
+<text>{{item.MyGoalValue}}/{{item.GoalValue}}
+</text>
+</view>
+
+
+</view>
+
+<!--百分比-->
+<view style="width:5rem ;background-color:red">
+{{item.successRate}}%
+</view>
+
+</view>
+
+
+
+</block>
+
+
+</view>
+
+<view>
+<!--年-->
+<text>每年</text>
+<block wx:for="{{goalList}}">
+
+
+<view class="goalContent" wx:if="{{item.Cycle==3}}">
+<image src="src" style="background-color:yellow;width:2rem;height:2rem;display:block;"></image>
+<!--文字内容-->
+<view>
+
+<view style="width:10rem">
+<text>{{item.GoalName}}
+</text>
+</view>
+
+<view style="width:10rem ;background-color:red">
+<text>{{item.MyGoalValue}}/{{item.GoalValue}}
+</text>
+</view>
+
+
+</view>
+
+<!--百分比-->
+<view style="width:5rem ;background-color:red">
+{{item.successRate}}%
+</view>
+
+</view>
+
+
+
+</block>
+
+
+</view>
+
+
+
+
+
+
+

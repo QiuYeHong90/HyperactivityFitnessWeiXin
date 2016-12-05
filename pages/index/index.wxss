@@ -1,0 +1,135 @@
+/**index.wxss**/
+
+
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 400rpx;
+  background-image: url(../../images/member/member_bg.imageset/member_bg@3x.png);
+  background-size:initial;
+  background-position: center center; 
+  background-repeat: no-repeat;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 50rpx;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+
+
+.contentOf {
+	background-color: yellow;
+	display: flex;
+	position: absolute;
+	/*margin-top: 0rpx;*/
+	margin-bottom: 0;
+}
+
+.headerofcenter{
+	background-color: yellow;
+  width: 100rpx;
+
+}
+
+
+.cell1{
+
+  display:flex;
+  justify-content:flex-start;
+  flex-wrap: wrap;
+  width: 10rem;
+
+  font-size: 30rpx;
+  height: 80rpx;
+  text-align: right;
+  align-items: center;
+  
+  padding: 20px 2rem;
+
+}
+
+.cell1_img{
+  height: 40rpx;
+  width: 40rpx;
+  position: relative;
+  top: 20rpx;
+}
+
+
+.usermotto {
+  
+  /*display: inline-block;*/
+  /*vertical-align: middle;*/
+  position: relative;
+  top: 15rpx;
+  left: 20rpx;
+
+  
+}
+
+
+
+.cell2{
+  
+  /*20em是屏幕宽度了*/
+  width: 6.6666rem;
+  min-height: 4rem; 
+  text-align: center;
+  padding: 20px 1rem 20px;
+  color: rgb(33, 33, 33);
+  text-decoration: none;
+  
+}
+
+.usermotto_cell1{
+  
+  margin-left: 10px;
+  color: #666666;
+}
+.usermotto_cell2{
+  
+  
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #666666;
+}
+
+.cell2_img{
+  height: 1rem;
+  width: 1rem;
+  background-color: transparent;
+}
+
+.wx_box{
+  /*容器*/
+  display: flex;
+  /*内容排版*/
+  justify-content:flex-start;
+  /*包裹方式*/
+  flex-wrap:wrap;
+  width: 100%;
+  min-height: 20px;
+
+  border-bottom:1px solid #dddddd;
+
+
+
+}
+.scrollView{padding-top: 40px; padding-bottom: 30px; height: 100%; }
+
+
+

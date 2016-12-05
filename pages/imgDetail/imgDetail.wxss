@@ -1,0 +1,14 @@
+.swiperImg{
+    
+    width: 100%;
+    height: 100%;
+}
+swiper-item{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    line-height: 100%;
+}

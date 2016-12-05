@@ -1,0 +1,55 @@
+
+
+<view class="page">
+
+<video src="{{topic_url}}" style="width:100%; height:210px; margin:0 0 0px">
+
+
+
+</video>
+<view class="title">
+{{Title}}
+</view>
+
+
+
+
+<scroll-view class="comment">
+<view style="border-bottom:2px solid #dddddd; padding-left:1rem">
+<text style="border-bottom:2px solid #0eaaed"> 
+评论
+</text>
+
+
+</view>
+
+<!--任务评论-->
+<block wx:for="{{Adata.comments}}">
+
+<view class="item_comment">
+    <image src="{{item.passport.img_url}}" class="headerImg"></image>
+    <view class="textComments">
+    <text style="display:block"> {{item.passport.nickname}}</text>
+    <text style="display:block ; font-size:13px">{{item.create_time}}</text>
+    <text style="display:block">{{item.content}}</text>
+    
+    </view>
+    
+
+</view>
+</block>
+
+
+
+
+
+</scroll-view>
+
+<view class="bottomView">
+
+zhe
+</view>
+
+
+</view>
+

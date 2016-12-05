@@ -1,0 +1,41 @@
+
+.hearder_view{
+    width:100%;height:150px;background-color:yellow;display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+
+}
+
+.itemContent{
+    align-items: center;
+    text-align: center;
+
+    
+
+}
+.text_item{
+    font-size: 15px;
+}
+
+.centerText{
+    display:block;
+    position:relative;
+    top: -70px;
+}
+
+.cavas_view{
+  border-radius:50%;
+  border: 2px solid #dddddd;
+}
+
+.goalContent{
+    height: 80px;
+    width: 100%;
+    border-top: 1px solid #dddddd;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+}
