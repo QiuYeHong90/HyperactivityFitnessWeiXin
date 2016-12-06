@@ -1,0 +1,37 @@
+
+<form bindsubmit="formSubmit" class="formContent" >
+
+<view class="countView">
+    <image src="../../images/logins/login_ account.imageset/login_ account@2x.png" class="iconImg">
+    </image>
+    <input placeholder="手机/邮箱" auto-focus class="inputClass" name="count" />
+</view>
+
+<view class="countView">
+    <image src="../../images/logins/login_password.imageset/login_password@2x.png" class="iconImg" >
+    </image>
+    <input placeholder="请输入密码" password="{{true}}" auto-focus class="inputClass" name="password" />
+</view>
+<view class="viewOF">
+<view style="background-color:blue;width:5rem;" >忘记密码?</view>
+</view>
+
+
+<view class="class_1234">
+<view style="width:7rem;height:3rem;border-bottom:1px solid #dddddd"></view>
+<view style=" display:flex;justify-content:center; flex-wrap:wrap;width:4rem;height:5rem">
+<!--login_wechat-->
+<image src="../../images/logins/login_wechat.imageset/login_wechat@2x.png" style="height:3rem;width:3rem;display:block"></image>
+<view style="font-size:13px;">微信登录</view>
+
+</view>
+
+<view style="width:7rem;height:3rem;border-bottom:1px solid #dddddd ;" ></view>
+
+</view>
+<button form-type="submit">登陆</button>
+<button style="margin-top:10px" 	>注册</button>
+
+
+
+</form>

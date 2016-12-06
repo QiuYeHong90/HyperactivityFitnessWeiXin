@@ -18,10 +18,16 @@
 <!--目标成功率-->
 <view class="itemContent">
 <view class="cavas_view">
-<canvas canvas-id="numberOfSuccess1" style="width:100px;height:100px;">
+<canvas canvas-id="numberOfSuccess4" style="width:100px;height:100px" >
+
+<canvas canvas-id="numberOfSuccess1" class="numberOfSuccess1" style="width:100px;height:100px;">
+
+
 <text class="text_item centerText">{{headArr[1].num}}</text>
 <text class="text_item centerText">{{headArr[1].unit}}</text>
 </canvas>
+</canvas>
+
 </view>
 
 <text class="text_item">{{headArr[1].name}}</text>
@@ -39,8 +45,8 @@
 </view>
 <view>
 <!--日-->
-<text>每日</text>
-<block wx:for="{{goalList}}">
+<text hidden="{{dayArray.lenght<=0}}">每日</text>
+<block wx:for="{{dayArray}}">
 
 
 <view class="goalContent" wx:if="{{item.Cycle==0}}">
@@ -53,7 +59,7 @@
 </text>
 </view>
 
-<view style="width:10rem ;background-color:red">
+<view style="width:10rem ;">
 <text>{{item.MyGoalValue}}/{{item.GoalValue}}
 </text>
 </view>
@@ -62,7 +68,7 @@
 </view>
 
 <!--百分比-->
-<view style="width:5rem ;background-color:red">
+<view style="width:5rem ;">
 {{item.successRate}}%
 </view>
 
@@ -77,8 +83,8 @@
 
 <view>
 <!--周-->
-<text>每周</text>
-<block wx:for="{{goalList}}">
+<text hidden="{{weakArray.lenght<=0}}">每周</text>
+<block wx:for="{{weakArray}}">
 
 
 <view class="goalContent" wx:if="{{item.Cycle==2}}">
@@ -91,7 +97,7 @@
 </text>
 </view>
 
-<view style="width:10rem ;background-color:red">
+<view style="width:10rem ;">
 <text>{{item.MyGoalValue}}/{{item.GoalValue}}
 </text>
 </view>
@@ -100,7 +106,7 @@
 </view>
 
 <!--百分比-->
-<view style="width:5rem ;background-color:red">
+<view style="width:5rem ;">
 {{item.successRate}}%
 </view>
 
@@ -115,8 +121,8 @@
 
 <view>
 <!--月-->
-<text>每月</text>
-<block wx:for="{{goalList}}">
+<text hidden="{{monthArray.length<=0}}">每月</text>
+<block wx:for="{{monthArray}}">
 
 
 <view class="goalContent" wx:if="{{item.Cycle==1}}">
@@ -153,8 +159,8 @@
 
 <view>
 <!--年-->
-<text>每年</text>
-<block wx:for="{{goalList}}">
+<text hidden="{{yearArray.length<=0}}">每年</text>
+<block wx:for="{{yearArray}}">
 
 
 <view class="goalContent" wx:if="{{item.Cycle==3}}">
@@ -167,7 +173,7 @@
 </text>
 </view>
 
-<view style="width:10rem ;background-color:red">
+<view style="width:10rem ;">
 <text>{{item.MyGoalValue}}/{{item.GoalValue}}
 </text>
 </view>
@@ -176,7 +182,7 @@
 </view>
 
 <!--百分比-->
-<view style="width:5rem ;background-color:red">
+<view style="width:5rem ;">
 {{item.successRate}}%
 </view>
 

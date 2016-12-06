@@ -35,7 +35,16 @@
             <view class="ArticleType2">
                  <text class="titleFont ArticleType2">{{item.Title}}</text>
             </view>
-             <image src="{{item.ListPic}}" class="imgView ArticleType2Img "></image>
+            <block wx:if="{{item.ImgList.length>1}}">
+              <block  wx:for="{{item.ImgList}}">
+             
+                 <image   src="http://www.8848fit.com/hifitweb/file/article/{{item.pic}}" class="imgView ArticleType2Img " ></image>
+             </block>
+            
+            </block>
+           
+
+             <image src="{{item.ListPic}}" class="imgView ArticleType2Img  " wx:if="{{item.ImgList.length<=1}}"></image>
             
             
         </view>

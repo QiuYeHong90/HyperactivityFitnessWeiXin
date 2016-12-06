@@ -33,7 +33,8 @@ App({
   },
   globalData:{
     userInfo:null,
-    imgArray:[]
+    imgArray:[],
+    uid:null
   }
     
   

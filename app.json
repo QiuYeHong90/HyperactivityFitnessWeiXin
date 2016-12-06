@@ -8,7 +8,8 @@
         "pages/imgDetail/imgDetail",
         "pages/record/record",
         "pages/second/articleList/articleList",
-        "pages/second/articleDetail/articleDetail"
+        "pages/second/articleDetail/articleDetail",
+        "pages/login/login"
     ],
     "window": {
       

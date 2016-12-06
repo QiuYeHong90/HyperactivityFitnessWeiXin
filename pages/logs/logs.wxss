@@ -6,3 +6,7 @@
 .log-item {
   margin: 10rpx;
 }
+.iconImg{
+  width:2rem;
+  height: 2rem;
+}

@@ -124,7 +124,7 @@
   width: 100%;
   min-height: 20px;
 
-  border-bottom:1px solid #dddddd;
+  /*border-bottom:1px solid #dddddd;*/
 
 
 

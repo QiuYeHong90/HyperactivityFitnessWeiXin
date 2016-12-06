@@ -3,8 +3,8 @@
 
 <scrow-view class="scrollView" data-c_e_id="wx_scroll_view_18790ec8" lower-threshold="50" scroll-y="True" style="overflow-x: hidden; overflow-y: auto; " upper-threshold="50">
   <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" mode="scaleToFit" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <image class="userinfo-avatar" mode="scaleToFit" src="{{userInfo.headimg}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickname}}</text>
   </view>
 
  <!--内容-->
@@ -34,9 +34,9 @@ style="background-image: url(../../images/单选选上@3x.png);background-size: 
 
 <view   class ="wx_box ">
     
-<block wx:for = '{{[list,list]}}'>
+<block wx:for = '{{list}}'>
 
-<block wx:for = '{{item}}'>
+
 <navigator class="bottomGrayboder rightGrayboder cell2"  hover-class="navigator-hover" url="../detail/detail">
 <image 
 class="cell2_img"  
@@ -46,48 +46,11 @@ style="background-image: url(../../images/member/{{item.icon}}.imageset/{{item.i
 
 <text class="usermotto_cell2">{{item.title}}</text>
 </navigator>
-</block>
-</block>
-    
-</view>
-<view   class ="wx_box ">
-    
-<block wx:for = '{{[list,list]}}'>
 
-<block wx:for = '{{item}}'>
-<navigator class="bottomGrayboder rightGrayboder cell2"  hover-class="navigator-hover" url="../detail/detail">
-<image 
-class="cell2_img"  
-mode="aspectFit" 
-src="../../images/member/{{item.icon}}.imageset/{{item.icon}}@3x.png" 
-style="background-image: url(../../images/member/{{item.icon}}.imageset/{{item.icon}}@3x.png);background-size: contain; background-position: center center; background-repeat: no-repeat; "/>
-
-<text class="usermotto_cell2">{{item.title}}</text>
-</navigator>
-</block>
 </block>
     
 </view>
 
-
-<view   class ="wx_box ">
-    
-<block wx:for = '{{[list,list]}}'>
-
-<block wx:for = '{{item}}'>
-<navigator class="bottomGrayboder rightGrayboder cell2"  hover-class="navigator-hover" url="../detail/detail">
-<image 
-class="cell2_img"  
-mode="aspectFit" 
-src="../../images/member/{{item.icon}}.imageset/{{item.icon}}@3x.png" 
-style="background-image: url(../../images/member/{{item.icon}}.imageset/{{item.icon}}@3x.png);background-size: contain; background-position: center center; background-repeat: no-repeat; "/>
-
-<text class="usermotto_cell2">{{item.title}}</text>
-</navigator>
-</block>
-</block>
-    
-</view>
 </scrow-view>
 
    
