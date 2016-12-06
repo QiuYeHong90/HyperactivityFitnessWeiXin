@@ -45,7 +45,7 @@
 </view>
 <view>
 <!--日-->
-<text hidden="{{dayArray.lenght<=0}}">每日</text>
+<text hidden="{{dayArray.length<=0}}">每日</text>
 <block wx:for="{{dayArray}}">
 
 
@@ -83,7 +83,7 @@
 
 <view>
 <!--周-->
-<text hidden="{{weakArray.lenght<=0}}">每周</text>
+<text hidden="{{weakArray.length<=0}}">每周</text>
 <block wx:for="{{weakArray}}">
 
 

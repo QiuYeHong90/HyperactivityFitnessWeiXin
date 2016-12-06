@@ -37,7 +37,7 @@ style="background-image: url(../../images/单选选上@3x.png);background-size: 
 <block wx:for = '{{list}}'>
 
 
-<navigator class="bottomGrayboder rightGrayboder cell2"  hover-class="navigator-hover" url="../detail/detail">
+<navigator class="bottomGrayboder rightGrayboder cell2"  hover-class="navigator-hover" url="../index/userCenterDetail/userCenterDetail?index={{index}}">
 <image 
 class="cell2_img"  
 mode="aspectFit" 

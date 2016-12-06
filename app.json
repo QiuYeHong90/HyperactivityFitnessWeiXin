@@ -9,7 +9,8 @@
         "pages/record/record",
         "pages/second/articleList/articleList",
         "pages/second/articleDetail/articleDetail",
-        "pages/login/login"
+        "pages/login/login",
+        "pages/index/userCenterDetail/userCenterDetail"
     ],
     "window": {
       
