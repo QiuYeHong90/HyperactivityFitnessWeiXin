@@ -4,6 +4,8 @@ var app = getApp()
 var NetRq = require('../../utils/CircleNetRequest.js');
 var Base64 = require('../../libs/js-base64/base64.modified.js');
 var userID
+
+
 Page({
 
 
@@ -123,7 +125,6 @@ Page({
         wx.getStorage({
             key: 'userInfor',
             success: function (res) {
-    
                 that.setData({
                     userInfo: res.data.data
                 })
@@ -131,22 +132,12 @@ Page({
             },
             fail: function () {
 
-                wx.navigateTo({
-                    url: '../login/login'
-
+                wx.redirectTo({
+                    url: '../login/login?url=index'
                 })
 
             },
         })
-
-
-        // //调用应用实例的方法获取全局数据
-        // app.getUserInfo(function (userInfo) {
-        //     //更新数据
-        //     that.setData({
-        //         userInfo: userInfo
-        //     })
-        // })
     }
 })
 

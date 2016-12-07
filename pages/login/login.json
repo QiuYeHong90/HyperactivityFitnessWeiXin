@@ -1,4 +1,5 @@
 {
     "navigationBarTitleText": "登陆",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": false,
+    "tabBarhidden": true
 }

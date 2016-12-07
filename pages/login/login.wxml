@@ -1,5 +1,5 @@
 
-<form bindsubmit="formSubmit" class="formContent" >
+<form bindsubmit="formSubmit" class="formContent" wx:if="{{isShow}}" >
 
 <view class="countView">
     <image src="../../images/logins/login_ account.imageset/login_ account@2x.png" class="iconImg">

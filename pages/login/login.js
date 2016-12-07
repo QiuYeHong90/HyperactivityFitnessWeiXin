@@ -3,10 +3,16 @@ var netRq = require('../../utils/CircleNetRequest.js')
 
 Page({
   data:{
-    
+    pageName:'',
+    isShow:1
   },
   onLoad:function(options){
+    wx.hideNavigationBarLoading(true)
     // 页面初始化 options为页面跳转所带来的参数
+   var that = this
+   that.setData({
+     pageName:options.url
+   })
    
     
   },
@@ -15,10 +21,27 @@ Page({
    
   },
   onShow:function(){
+    console.log(this.data.pageName)
+    var name = this.data.pageName
+    var that = this
+   // 获取是否登陆过
    
+
+    wx.getStorage({
+      key: 'userInfor',
+      success: function(res){
+        that.setData({
+          isShow:0
+        })
+        wx.redirectTo({
+           url: '../'+name+'/'+name
+        })
+      }
+      
+    })
   },
   onHide:function(){
-  
+    
   },
   onUnload:function(){
     // 页面关闭
@@ -36,9 +59,15 @@ Page({
     netRq.netPostRequest('Login',param,function(res){
 
         console.log(res)
-        wx.navigateBack({
-          delta: 1, // 回退前 delta(默认为1) 页面
-          
+        wx.redirectTo({
+          url: '../userCenter/userCenter',
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            
+          },
+        
         })
 
 

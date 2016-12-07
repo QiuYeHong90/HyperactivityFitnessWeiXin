@@ -2,7 +2,7 @@
 var NetRq = require('../../utils/CircleNetRequest.js');
 var pageNo = 1;
 var appInstance = getApp();
-var userID ;
+var userID;
 Page({
   data: {
 
@@ -31,15 +31,14 @@ Page({
     // 获取是否登陆过
     wx.getStorage({
       key: 'userInfor',
-      success: function(res){
-       pageNetReq(res.data.data.uid,that)
-       userID = res.data.data.uid
+      success: function (res) {
+        pageNetReq(res.data.data.uid, that)
+        userID = res.data.data.uid
       },
-      fail: function() {
-     
-        wx.navigateTo({
-          url: '../login/login'
-          
+      fail: function () {
+
+        wx.redirectTo({
+          url: '../login/login?url=first'
         })
 
       },
@@ -48,7 +47,7 @@ Page({
 
 
 
-  
+
   },
 
   // 刷新
@@ -176,58 +175,58 @@ Page({
 })
 
 
-function pageNetReq(uid,that){
-  that.param1.uid=uid;
-    NetRq.netRequest('GetTopicDynamicTagList', that.param1, function (obj) {
-      // 不能用this 直接调用data 
+function pageNetReq(uid, that) {
+  that.param1.uid = uid;
+  NetRq.netRequest('GetTopicDynamicTagList', that.param1, function (obj) {
+    // 不能用this 直接调用data 
+    that.setData({
+      dataA: obj.data,
+      success: obj.success,
+      msg: obj.msg
+    });
+
+  }),
+
+    that.DynamicListParam.uid = uid;
+  // http://www.8848fit.com/microweb/HiFitService.asmx/GetCircleDynamicList 
+  NetRq.netRequest('GetCircleDynamicList', that.DynamicListParam, function (obj) {
+    // 不能用this 直接调用data 
+
+    console.log(obj.data);
+    that.setData({
+      dataDynamicList: obj.data,
+
+      success: obj.success,
+      msg: obj.msg
+    });
+
+    console.log(that.data.dataDynamicList.length);
+    // listImg
+    for (var a = 0; a < that.data.dataDynamicList.length; a++) {
+      var model = that.data.dataDynamicList[a];
+      if (model.listImg) {
+        console.log(model.listImg.length);
+        model.imgCount = model.listImg.length;
+      } else {
+        model.imgCount = 0;
+      }
+
+
+    }
+    that.setData({
+      dataDynamicList: that.data.dataDynamicList
+    });
+    console.log(that.data.dataDynamicList);
+
+
+  }),
+    //调用应用实例的方法获取全局数据
+    app.getUserInfo(function (userInfo) {
+      //更新数据
       that.setData({
-        dataA: obj.data,
-        success: obj.success,
-        msg: obj.msg
-      });
-
-    }),
-
- that.DynamicListParam.uid=uid;
-      // http://www.8848fit.com/microweb/HiFitService.asmx/GetCircleDynamicList 
-      NetRq.netRequest('GetCircleDynamicList', that.DynamicListParam, function (obj) {
-        // 不能用this 直接调用data 
-
-        console.log(obj.data);
-        that.setData({
-          dataDynamicList: obj.data,
-
-          success: obj.success,
-          msg: obj.msg
-        });
-
-        console.log(that.data.dataDynamicList.length);
-        // listImg
-        for (var a = 0; a < that.data.dataDynamicList.length; a++) {
-          var model = that.data.dataDynamicList[a];
-          if (model.listImg) {
-            console.log(model.listImg.length);
-            model.imgCount = model.listImg.length;
-          } else {
-            model.imgCount = 0;
-          }
-
-
-        }
-        that.setData({
-          dataDynamicList: that.data.dataDynamicList
-        });
-        console.log(that.data.dataDynamicList);
-
-
-      }),
-      //调用应用实例的方法获取全局数据
-      app.getUserInfo(function (userInfo) {
-        //更新数据
-        that.setData({
-          userInfo: userInfo
-        })
+        userInfo: userInfo
       })
+    })
 
 
 

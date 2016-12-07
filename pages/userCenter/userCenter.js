@@ -57,11 +57,10 @@ Page({
        pageNetReq(res.data.data.uid,that,context)
       },
       fail: function() {
-     
-        wx.navigateTo({
-          url: '../login/login'
-          
+        wx.redirectTo({
+           url: '../login/login?url=userCenter'
         })
+       
 
       },
     })
