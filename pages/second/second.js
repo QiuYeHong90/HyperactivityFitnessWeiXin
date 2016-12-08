@@ -6,6 +6,10 @@ var netRq = require('../../utils/CircleNetRequest.js')
 Page({
   data:{},
   onLoad:function(options){
+
+     wx.setNavigationBarTitle({
+      title: "精品内容"
+    })
     // 页面初始化 options为页面跳转所带来的参数
     // http://www.8848fit.com/microweb/HiFitService.asmx/GetArticleMenuList
     var that = this;
@@ -20,6 +24,9 @@ Page({
   },
   onReady:function(){
     // 页面渲染完成
+     wx.setNavigationBarTitle({
+      title: "精品内容"
+    })
   },
   onShow:function(){
     // 页面显示

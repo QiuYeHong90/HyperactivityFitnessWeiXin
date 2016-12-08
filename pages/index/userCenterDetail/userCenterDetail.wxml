@@ -1,4 +1,12 @@
 
+
+
+
+
+
+
+<!--设置信息-->
+<view wx:if="{{indexID==5}}"> 
 <view>
 设置你的信息
 </view>
@@ -29,4 +37,12 @@
 <view bindtap="overcount">
 安全退出
 </view>
+</view>
+
+</view>
+
+<!--位置服务-->
+<view wx:if="{{indexID==8}}" bindtap="tap_001">
+位置服务
+{{address}}
 </view>

@@ -21,13 +21,7 @@ Page({
       title: options.MenuName,
        ArticleMenuID:options.ArticleMenuID
     })
-    wx.setNavigationBarTitle({
-      title: that.data.title,
-      success: function (res) {
-        // success
-
-      }
-    })
+    
     // http://www.8848fit.com/microweb/HiFitService.asmx/GetArticleList
     var that = this;
     netRq.netRequest("GetArticleList", { ArticleTagID: "", uid: "5834", pageno: "1", pagesize: "20", ArticleMenuID: options.ArticleMenuID }, function (data) {
@@ -50,10 +44,14 @@ Page({
   onReady: function () {
     // 页面渲染完成
     this.audioCtx = wx.createAudioContext('myAudio')
+    wx.setNavigationBarTitle({
+      title: this.data.title
+    })
   },
   onShow: function () {
     // 页面显示
 
+    
   },
   onHide: function () {
     // 页面隐藏

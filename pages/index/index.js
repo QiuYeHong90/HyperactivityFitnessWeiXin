@@ -61,6 +61,11 @@ Page({
             "title": "意见反馈",
             "storyboard": "MemberCenter",
             "identifier": "FitSecretaryVC",
+        },{
+            "icon": "member_feedback",
+            "title": "位置服务",
+            "storyboard": "MemberCenter",
+            "identifier": "FitSecretaryVC",
         }]
     },
 

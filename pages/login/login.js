@@ -1,5 +1,5 @@
 var netRq = require('../../utils/CircleNetRequest.js')
-
+var pageName
 
 Page({
   data:{
@@ -13,12 +13,12 @@ Page({
    that.setData({
      pageName:options.url
    })
-   
+   pageName = options.url
     
   },
   onReady:function(){
     // 页面渲染完成
-   
+   console.log('渲染了么')
   },
   onShow:function(){
     console.log(this.data.pageName)
@@ -57,16 +57,11 @@ Page({
     "phonetype":"2",
     "RegistrationID":""}
     netRq.netPostRequest('Login',param,function(res){
-
+        // var name = this.data.pageName
         console.log(res)
         wx.redirectTo({
-          url: '../userCenter/userCenter',
-          success: function(res){
-            // success
-          },
-          fail: function() {
-            
-          },
+          url: '../'+pageName+'/'+pageName
+          
         
         })
 
