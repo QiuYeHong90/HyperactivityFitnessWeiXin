@@ -2,6 +2,7 @@ var netRq = require('../../../utils/CircleNetRequest.js');
 var imgIndex = 0;
 var timer;
 var pageNo =  1;
+var indexAgo = -1;
 
 
 Page({
@@ -55,29 +56,40 @@ Page({
   },
   onHide: function () {
     // 页面隐藏
+     clearInterval(timer)
+     timer = null
+     wx.stopBackgroundAudio({
+       success: function(res){
+         // success
+       },
+       fail: function() {
+         // fail
+       },
+       complete: function() {
+         // complete
+       }
+     })
 
   },
   onUnload: function () {
     // 页面关闭
+    clearInterval(timer)
+     timer = null
+     wx.stopBackgroundAudio({
+       success: function(res){
+         // success
+       }
+     })
 
   },
   videoTap: function (res) {
 
     var index = res.currentTarget.dataset.index;
     var obj = this.data.obj.data[index];
-
-
-
     wx.navigateTo({
       url: '../articleDetail/articleDetail?Title=' + obj.Title + '&SourceUrl=' + obj.SourceUrl + '&ArticleID=' + obj.ArticleID,
       success: function (res) {
         // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
       }
     })
 
@@ -90,6 +102,38 @@ Page({
     var that = this
     var index = res.currentTarget.dataset.index
     console.log(res.currentTarget.dataset.index);
+
+    if(indexAgo==index){
+      wx.getBackgroundAudioPlayerState({
+        success: function(res){
+          // success
+          var status = res.status
+        var dataUrl = res.dataUrl
+        var currentPosition = res.currentPosition
+        var duration = res.duration
+        var downloadPercent = res.downloadPercent
+        if(status==1){
+        clearInterval(timer)
+        timer = null
+        wx.stopBackgroundAudio({
+       success: function(res){
+         // success
+       },
+       fail: function() {
+         // fail
+       },
+       complete: function() {
+         // complete
+       }
+     })
+
+     return
+        }
+        }
+      })
+      
+      
+    }
     wx.playBackgroundAudio({
       dataUrl: res.currentTarget.dataset.voice,
       success: function (res) {
@@ -101,8 +145,10 @@ Page({
         ]
         var normal = '../../../images/news/news_voicenormal.imageset/news_voicenormal@2x.png'
 
-       clearInterval
+       clearInterval(timer)
         timer = null
+
+
         timer = setInterval(function () {
           
           that.setData({
@@ -113,7 +159,16 @@ Page({
           imgIndex++;
         }, 300)
 
+        // 监听播放停止
 
+        wx.onBackgroundAudioStop(function() {
+          clearInterval(timer)
+          that.setData({
+            voiceIndex:index,
+            VocieImgUrl: normal
+            
+          })
+        })
 
       },
 
