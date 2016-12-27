@@ -5,12 +5,14 @@
         "pages/first/first",
         "pages/second/second",
         "pages/index/index",
-        "pages/imgDetail/imgDetail",
+        
         "pages/record/record",
         "pages/second/articleList/articleList",
         "pages/second/articleDetail/articleDetail",
         "pages/login/login",
-        "pages/index/userCenterDetail/userCenterDetail"
+        "pages/index/userCenterDetail/userCenterDetail",
+        "pages/publishpDyanmic/publishpDyanmic"
+
     ],
     "window": {
       

@@ -1,4 +1,4 @@
-
+var util = require('util.js');
 /**
  * 
  * 
@@ -10,50 +10,51 @@
 
 
 
-function netRequest(name,param,callBack){
-    // http://www.8848fit.com/microweb/HiFitService.asmx/GetCircleDynamicList
-    wx.request({
-      url: 'http://www.8848fit.com/microweb/HiFitService.asmx/'+name,
-      data: {
-          strJSon:JSON.stringify(param)
+function netRequest(name, param, callBack) {
+  // http://www.8848fit.com/microweb/HiFitService.asmx/GetCircleDynamicList
 
-      },
-      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        'content-type': 'application/json',
-        'content-type': 'application/soap+xml;charset=utf-8',
-        'accept':'application/soap+xml;charset=UTF-8'
+  wx.request({
+    // url: "http://www.8848fit.com/microweb/HiFitService.asmx/"+name,
+    url: util.kBaseUrl(name),
+    data: {
+      strJSon: JSON.stringify(param)
 
-      }, // 设置请求的 header
-      success: function(res){
-        // success
-        var array =  res.data.split("<string xmlns=\"http://tempuri.org/\">");
-        array = array[1].split("</string>");
-        var str ="";
-        str = array[0];
-        
-        if(str.match("&amp;")){
-          var items=str.split("&amp;")
-          str=items.join("&");
-          
-          // str.replace("&amp;","&"); 这个方法行不通
+    },
+    method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    header: {
+      'content-type': 'application/json',
+      'content-type': 'application/soap+xml;charset=utf-8',
+      'accept': 'application/soap+xml;charset=UTF-8'
 
-        }
-       
-       
-         
-        var obj = JSON.parse(str);
-         
+    }, // 设置请求的 header
+    success: function (res) {
+      // success
+      var array = res.data.split("<string xmlns=\"http://tempuri.org/\">");
+      array = array[1].split("</string>");
+      var str = "";
+      str = array[0];
 
-        callBack(obj);
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
+      if (str.match("&amp;")) {
+        var items = str.split("&amp;")
+        str = items.join("&");
+
+        // str.replace("&amp;","&"); 这个方法行不通
+
       }
-    })
+
+
+
+      var obj = JSON.parse(str)
+
+      callBack(obj);
+    },
+    fail: function () {
+      // fail
+    },
+    complete: function () {
+      // complete
+    }
+  })
 }
 exports.netRequest = netRequest;
 
@@ -62,155 +63,119 @@ exports.netRequest = netRequest;
 
 /**
  * 文件上传
- * http://www.8848fit.com/microweb/HiFitService.asmx/EditMyUser
+ * 
  */
 
-function updateFile(name,param,callBack){
-    name='EditMyUser'
-    // wx.uploadFile({
-    //   url: 'http://www.8848fit.com/microweb/HiFitService.asmx/'+name,
-    //   filePath:'../images/clock.png',
-    //   name:'file',
-    //   header: {
+function uploadFile(filePath,name,callBack) {
+  wx.showToast({
+    title: '上传中',
+    icon: 'loading',
+    duration: 10000
+  })
 
-    //     'content-type': 'application/json',
-    //     'content-type': 'application/soap+xml;charset=utf-8',
-    //     'accept':'application/soap+xml;charset=UTF-8;application/x-www-form-urlencoded'
-    //   }, // 设置请求的 header
-    //   formData: {
-    //     strJSon:JSON.stringify(param)
+  setTimeout(function () {
+    wx.hideToast()
+  }, 2000)
+  
 
-    //   }, // HTTP 请求中其他额外的 form data
-    //   success: function(res){
-    //     // success
-    //     console.log(res)
-    //   },
-    //   fail: function() {
-    //     // fail
-    //   },
-    //   complete: function() {
-    //     // complete
-    //   }
-    // })
-     wx.request({
-      url: 'http://www.8848fit.com/microweb/HiFitService.asmx/'+name,
-      data: {
-          strJSon:JSON.stringify(param)
+  wx.uploadFile({
+    url: util.baseDomain() + 'IOSFile.ashx/'+name,
+    filePath: filePath,
+    name: 'image',
+    header: {
+      "Content-Type": "image/jpeg",
+    }, // 设置请求的 header
+    formData: {
+      versionno: '2.7.2.0',
+      phonetype: "2",
 
-      },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        'content-type': 'application/json',
-        'content-type': 'application/soap+xml;charset=utf-8',
-        'accept':'application/soap+xml;charset=UTF-8;application/x-www-form-urlencoded'
-
-      }, // 设置请求的 header
-      success: function(res){
-        // success
-        var array =  res.data.split("<string xmlns=\"http://tempuri.org/\">");
-        array = array[1].split("</string>");
-        var str ="";
-        str = array[0];
-        
-        if(str.match("&amp;")){
-          var items=str.split("&amp;")
-          str=items.join("&");
-          
-          // str.replace("&amp;","&"); 这个方法行不通
-
-        }
-       
-       
-         
-        var obj = JSON.parse(str);
-         
-
-        callBack(obj);
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
-      }
-    })
+    }, // HTTP 请求中其他额外的 form data
+    success: function (res) {
+      // success
+      console.log(res)
+      var obj = JSON.parse(res.data)
+      callBack(obj.info.FileName)
+    },
+    fail: function () {
+      // fail
+    },
+   
+  })
 }
 
-exports.updateFile = updateFile;
+exports.uploadFile = uploadFile;
+
+// *********************************************************
 // http://www.8848fit.com/microweb/file/
 // http://www.8848fit.com/hifitweb/file/
-function imgURL (img){
-    return 'http://www.8848fit.com/hifitweb/file/'+img
+function imgURL(img) {
+  // return util.baseDomain() + 'file/' + img
+  return util.K_URL_HFIT()+'file/'+img
 }
 exports.imgURL = imgURL;
 
 
+/**
+ * 
+ * 
+ * 
+ * post方法
+ */
 // POST
 
-function netPostRequest(name,param,callBack){
-    // http://www.8848fit.com/microweb/HiFitService.asmx/Login
-    wx.request({
-      url: 'http://www.8848fit.com/microweb/HiFitService.asmx/'+name,
-      data: {
-          strJSon:JSON.stringify(param)
+function netPostRequest(name, param, callBack) {
+  wx.request({
+    url: util.kBaseUrl(name),
+    data: {
+      strJSon: JSON.stringify(param)
 
-      },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {
-        
-        'content-type': 'application/x-www-form-urlencoded',
+    },
+    method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    header: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'accept': 'text/xml;application/soap+xml;charset=UTF-8;application/x-www-form-urlencoded'
 
-  
-  
-        'accept':'text/xml;application/soap+xml;charset=UTF-8;application/x-www-form-urlencoded'
+    }, // 设置请求的 header text/xml; charset=utf-8
+    success: function (res) {
+      // success
+      var array = res.data.split("<string xmlns=\"http://tempuri.org/\">");
+      array = array[1].split("</string>");
+      var str = "";
+      str = array[0];
 
-      }, // 设置请求的 header text/xml; charset=utf-8
-      success: function(res){
-        // success
-        var array =  res.data.split("<string xmlns=\"http://tempuri.org/\">");
-        array = array[1].split("</string>");
-        var str ="";
-        str = array[0];
-        
-        if(str.match("&amp;")){
-          var items=str.split("&amp;")
-          str=items.join("&");
-          
-          // str.replace("&amp;","&"); 这个方法行不通
+      if (str.match("&amp;")) {
+        var items = str.split("&amp;")
+        str = items.join("&");
 
-        }
-        
-        
+        // str.replace("&amp;","&"); 这个方法行不通
 
-       
-         
-        var obj = JSON.parse(str);
-         wx.setStorage({
-          key: 'userInfor',
-          data: obj,
-          success: function(res){
-            // success
-          },
-          fail: function() {
-            // fail
-          },
-          complete: function() {
-            // complete
-          }
-        })
-
-        callBack(obj);
-      },
-      fail: function() {
-        // fail
-      },
-      complete: function() {
-        // complete
       }
-    })
+
+      var obj = JSON.parse(str);
+      
+
+      callBack(obj);
+    },
+    fail: function () {
+      // fail
+    },
+    complete: function () {
+      // complete
+    }
+  })
 }
 exports.netPostRequest = netPostRequest;
 
 
 
+// 获取uid
+function GetUid(callBack) {
+    wx.getStorage({
+        key: 'userInfor',
+        success: function (res) {
+            callBack(res.data.data.uid)
+        }
+    })
+}
 
+exports.GetUid=GetUid

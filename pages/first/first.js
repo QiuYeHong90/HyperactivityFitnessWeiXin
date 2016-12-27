@@ -1,5 +1,6 @@
 // pages/first/first.js
 var NetRq = require('../../utils/CircleNetRequest.js');
+var util = require('../../utils/util.js');
 var pageNo = 1;
 var appInstance = getApp();
 var userID;
@@ -10,7 +11,8 @@ Page({
     dataDynamicList: [],
     success: true,
     msg: null,
-    scaleImg: 1
+    scaleImg: 1,
+    baseDomain:util.baseDomain()
 
   },
   param1: {
@@ -52,6 +54,15 @@ Page({
 
   // 刷新
   onPullDownRefresh: function () {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+
+    setTimeout(function () {
+      wx.hideToast()
+    }, 2000)
     var that = this;
     pageNo = 1;
     var paramRefresh = { phonetype: "2", CircleID: "", versionno: "2.8.0", uid: userID, pagesize: "10", pageno: pageNo };
@@ -92,6 +103,16 @@ Page({
 
 
   onReachBottom: function (event) {
+
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading',
+      duration: 10000
+    })
+
+    setTimeout(function () {
+      wx.hideToast()
+    }, 2000)
     var that = this;
 
 
@@ -141,6 +162,7 @@ Page({
 
   },
   imgTap: function (event) {
+    var that = this
     console.log(event.currentTarget.dataset.index, event.currentTarget.dataset.listindex);
 
     var imgArray = this.data.dataDynamicList[event.currentTarget.dataset.listindex].listImg;
@@ -152,7 +174,7 @@ Page({
     //   });
     var urlArrayImg = [];
     for (var i = 0; i < imgArray.length; i++) {
-      urlArrayImg[i] = 'http://www.8848fit.com/microweb/file/' + imgArray[i].Thumbnail;
+      urlArrayImg[i] = that.data.baseDomain+'file/' + imgArray[i].Thumbnail;
     }
 
     //展示图片
@@ -170,7 +192,18 @@ Page({
         // complete
       }
     })
+  },
+
+  publishDy: function () {
+    wx.navigateTo({
+      url: '../publishpDyanmic/publishpDyanmic',
+      success: function (res) {
+        // success
+      }
+    })
   }
+
+
 
 })
 

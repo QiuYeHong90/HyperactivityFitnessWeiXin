@@ -1,44 +1,13 @@
 var netRq = require('../../utils/CircleNetRequest.js')
 var pageName
-
+var MD5 = require("../../libs/js/md5.min.js")
 Page({
   data: {
     pageName: '',
     isShow: 1
   },
   onLoad: function (options) {
-    wx.login({
-      success: function (res) {
-        // success
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session',
-            data: {
-
-               appid: "wxc09bea3ff94c9a8b",
-              secret: "67788f74cb464f379cfeade2db4d9852",
-              js_code: res.code
-
-            },
-            method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-            // header: {}, // 设置请求的 header
-            success: function(res){
-              // success
-            }
-          })
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-        }
-      },
-
-    })
-
-
-
-
-
-
+    console.log(MD5("safdsafsda"))
 
     wx.hideNavigationBarLoading(true)
     // 页面初始化 options为页面跳转所带来的参数
@@ -58,11 +27,6 @@ Page({
     var name = this.data.pageName
     var that = this
     // 获取是否登陆过
-
-
-
-
-
 
     wx.getStorage({
       key: 'userInfor',
@@ -97,15 +61,73 @@ Page({
     }
     netRq.netPostRequest('Login', param, function (res) {
       // var name = this.data.pageName
-      console.log(res)
-      wx.redirectTo({
-        url: '../' + pageName + '/' + pageName
-
-
+      console.log(res, '../' + pageName + '/' + pageName)
+      wx.showToast({
+        title: '登陆中',
+        icon: 'loading',
+        duration: 10000
       })
+
+
+      if (res.success == true) {
+
+        wx.setStorage({
+          key: 'userInfor',
+          data: res,
+          success: function (obj) {
+            // success
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              duration: 2000,
+              mask: true
+            })
+            setTimeout(function () {
+              wx.hideToast()
+              wx.switchTab({
+                url: '/pages/userCenter/userCenter'
+
+              })
+            }, 2000)
+          }
+        })
+
+
+
+      } else {
+        wx.hideToast()
+        wx.showModal({
+          title: res.msg,
+          showCancel:false,
+          content: "",
+          success: function (res) {
+            
+          }
+        })
+      }
+
+
+
+
 
 
     })
 
+  },
+
+  onShareAppMessage: function () {
+    return {
+      title: '自定义分享标题',
+      desc: '自定义分享描述',
+      path: '/pages/login/login'
+    }
+  },
+  weixindl: function (res) {
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+      }
+    })
   }
+
 })

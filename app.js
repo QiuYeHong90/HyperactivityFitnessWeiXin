@@ -1,3 +1,5 @@
+
+
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -35,7 +37,7 @@ App({
   globalData: {
     userInfo: null,
     imgArray: [],
-    uid: null
+    GetUid: GetUid()
   }
 
 
@@ -43,3 +45,12 @@ App({
 
 
 });
+// 获取uid
+function GetUid(callBack) {
+    wx.getStorage({
+        key: 'userInfor',
+        success: function (res) {
+            callBack(res.data.data.uid)
+        }
+    })
+}

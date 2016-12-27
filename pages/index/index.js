@@ -61,7 +61,7 @@ Page({
             "title": "意见反馈",
             "storyboard": "MemberCenter",
             "identifier": "FitSecretaryVC",
-        },{
+        }, {
             "icon": "member_feedback",
             "title": "位置服务",
             "storyboard": "MemberCenter",
@@ -71,6 +71,7 @@ Page({
 
     //事件处理函数
     bindViewTap: function (da) {
+        var that = this;
         wx.chooseImage({
             count: 9, // 最多可以选择的图片张数，默认9
             sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
@@ -78,6 +79,12 @@ Page({
             success: function (res) {
                 // success
                 console.log(res)
+                var imgPath = res.tempFilePaths[0];
+
+
+                that.setData({
+                    "userInfo.headimg": imgPath
+                })
             },
             fail: function () {
                 // fail
@@ -89,7 +96,41 @@ Page({
 
         var that = this;
         var imagePath = '../../images/clock.png'
+        wx.uploadFile({
+            url: 'http://www.8848fit.com/microweb/HiFitService.asmx/AddDynamic',
+            filePath: imagePath,
+            name: 'image',
+            header: {
+                "Content-Type": "application/x-www-form-urlencoded"
 
+            }, // 设置请求的 header
+            formData: {
+                strJSon: { "versionno": "2.7.2.0", "DynamicTagID": "15", "DynamicTagName": "骑行", "phonetype": "2", "uid": "1914", "VideoImg": "", "FileUrlType": "0", "CircleID": "", "ImageListIDs": "9af5e803-7718-4c23-b60a-454f80b09a1b.jpg", "DynamicInfo": "", "DynamicType": "0", "VideoUrl": "" }
+
+
+
+            }, // HTTP 请求中其他额外的 form data
+            success: function (res) {
+                // success
+                wx.showToast({
+                    title: '成功',
+                    icon: 'success',
+                    duration: 2000
+                })
+                setTimeout(function () {
+                    wx.hideToast()
+                    
+                }, 2000)
+
+
+            },
+            fail: function () {
+                // fail
+            },
+            complete: function () {
+                // complete
+            }
+        })
         that.setData({
             'userInfo.avatarUrl': imagePath
         })

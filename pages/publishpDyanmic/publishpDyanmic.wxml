@@ -1,0 +1,30 @@
+
+<form bindsubmit="EventHandle">
+
+<textarea placeholder="分享新鲜事" style="height:10x;width:20rem" maxlength="10000" name="input" bin />
+<view class="imgView">
+
+<image bindtap="addpic" mode="scaleToFill" src="../../images/dynamic/dynamic_addpic.imageset/dynamic_addpic@3x.png" class="img"></image>
+
+<block wx:for="{{imgList}}" wx:if="{{!isVideo}}">
+<image bindtap="addpic" mode="scaleToFill" src="{{item}}" class="img" ></image>
+
+</block>
+
+
+
+<video  src="{{imgList[0]}}" class="img" wx:if="{{isVideo}}"></video>
+
+
+
+
+</view>
+
+
+
+
+
+<button  form-type="submit">
+发布
+</button>
+</form>

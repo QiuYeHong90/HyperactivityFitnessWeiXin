@@ -19,10 +19,10 @@
 
 <view class="class_1234">
 <view style="width:7rem;height:3rem;border-bottom:1px solid #dddddd"></view>
-<view style=" display:flex;justify-content:center; flex-wrap:wrap;width:4rem;height:5rem">
+<view bindtap="weixindl" style=" display:flex;justify-content:center; flex-wrap:wrap;width:4rem;height:5rem">
 <!--login_wechat-->
-<image src="../../images/logins/login_wechat.imageset/login_wechat@2x.png" style="height:3rem;width:3rem;display:block"></image>
-<view style="font-size:13px;">微信登录</view>
+<image  src="../../images/logins/login_wechat.imageset/login_wechat@2x.png" style="height:3rem;width:3rem;display:block"></image>
+<view style="font-size:13px;" bindtap="weixindl">微信登录</view>
 
 </view>
 

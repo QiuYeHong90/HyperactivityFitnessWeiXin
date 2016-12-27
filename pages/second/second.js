@@ -1,6 +1,6 @@
 var netRq = require('../../utils/CircleNetRequest.js')
 
-
+var util = require('../../utils/util.js')
 
 
 Page({
@@ -13,7 +13,8 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     // http://www.8848fit.com/microweb/HiFitService.asmx/GetArticleMenuList
     var that = this;
-    netRq.netRequest("GetArticleMenuList",{uid:"5834"},function(data){
+    util.GetUid(function(uid){
+       netRq.netRequest("GetArticleMenuList",{uid:uid},function(data){
       for(var i =0;i<data.data.length;i++){
           data.data[i].Img= netRq.imgURL(data.data[i].Img)
       }
@@ -21,6 +22,8 @@ Page({
           obj:data
       })
     })
+    })
+   
   },
   onReady:function(){
     // 页面渲染完成
@@ -37,13 +40,7 @@ Page({
   onUnload:function(){
     // 页面关闭
 
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-    })
+ 
   },
   // 录音 更新了
   // record:function(){

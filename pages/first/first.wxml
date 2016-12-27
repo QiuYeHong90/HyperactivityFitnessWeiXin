@@ -1,10 +1,10 @@
 <!--pages/first/first.wxml-->
-<scroll-view class="topic_scrollView" scroll-y:ture >
+<view class="topic_scrollView" scroll-y="{{true}}" bindscrolltolower="toLower">
     <view class="Type_1" >
         <block wx:for="{{dataA}}">
         <!--http://www.8848fit.com/microweb/file/dynamic/2.jpg-->
         <!--type==1 的标签-->
-            <view wx:if="{{item.Type==1}}" class="item_type1" style="background-image: url('http://www.8848fit.com/microweb/file/{{item.Img}}') ">  
+            <view wx:if="{{item.Type==1}}" class="item_type1" style="background-image: url('{{baseDomain}}/file/{{item.Img}}') ">  
             
             <text class="text_type1">#{{item.DynamicTagName}}#</text>
             
@@ -39,7 +39,7 @@
     <block wx:for="{{dataDynamicList}}" wx:for-index="idx" >
     
      <view class="dynamic_cell">
-        <image src="http://www.8848fit.com/microweb/file/{{item.HeadImg}}" class = "dynamic_cell_userimg"></image>
+        <image src="{{baseDomain}}file/{{item.HeadImg}}" class = "dynamic_cell_userimg"></image>
         <view class= "content_cellView">
             <text class="text_content userName_text">{{item.NickName}}</text>
             <text class="text_content time_text">{{item.CreateTime}}</text>
@@ -59,8 +59,8 @@
 
                     
                     <!--动态高度计算-->
-                    <!--http://v.8848fit.com/file/dynamic/-->
-                    <image src="http://www.8848fit.com/microweb/file/{{item.Thumbnail}}" mode="scaleToFill" class="img_item"  data-hi="{{idx}}" bindload="loadImgOver" style="height:{{dataDynamicList[idx].imgCount==1?item.scaleImg*13.5:4}}rem; width:{{dataDynamicList[idx].imgCount==1? 13.5:4}}rem; margin-left:{{index%3!=0? 2:0}}px" bindtap="imgTap" data-index="{{index}}" data-listIndex="{{idx}}"> </image>
+                    <!--http://v.8848fit.com/file/dynamic/5c3e78b3-ecc0-4684-b1d3-7e9b2ebe77de-->
+                    <image src="{{baseDomain}}file/{{item.Thumbnail}}" mode="scaleToFill" class="img_item"  data-hi="{{idx}}" bindload="loadImgOver" style="height:{{dataDynamicList[idx].imgCount==1?item.scaleImg*16.5:4}}rem; width:{{dataDynamicList[idx].imgCount==1? 16.5:4}}rem; margin-left:{{index%3!=0? 2:0}}px" bindtap="imgTap" data-index="{{index}}" data-listIndex="{{idx}}"> </image>
                     </block>
                     
                     <video src="{{item.VideoUrl}}" wx:if="{{item.VideoUrl!==''}}">
@@ -107,4 +107,11 @@
     
 
 
-</scroll-view>
+</view>
+<image src="../../images/dynamic/circle_adddynamic@3x.png" class="dynamic_btn" bindtap="publishDy">
+
+
+</image>
+
+
+

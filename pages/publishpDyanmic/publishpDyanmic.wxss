@@ -1,0 +1,12 @@
+
+.img{
+    /*background-size: 6rem 6rem;*/
+    width: 6rem;
+    height: 6rem;
+
+}
+.imgView{
+    display:flex;
+    justify-content:inherit;
+    flex-wrap:wrap;
+}

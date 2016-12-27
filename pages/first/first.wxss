@@ -2,8 +2,12 @@
 .topic_scrollView{
     background-color: #dddddd;
     width: 100%;
-    /*height: 30rem;*/
+    /*height: 100%;*/
+    
+    
     padding-bottom: 0px;
+    /*white-space: nowrap; */
+   
 }
 
 .Type_1{
@@ -18,7 +22,8 @@
 }
 .item_type1{
     /*background-color: yellow;*/
-    width: 8.5rem;
+    white-space:pre-wrap;
+    width: 48%;
     height: 4rem;
     margin-top: 10px;
     background-size:cover;
@@ -47,6 +52,7 @@
     display: flex;
     justify-content:flex-start;
     flex-wrap: wrap;
+    white-space:pre-wrap;
 }
 
 .Type_2{
@@ -65,7 +71,7 @@
 }
 
 .item_type2{
-    width: 10rem;
+    width: 50%;
     height: 2rem;
     margin-top: 0px;
     border-top: 1px solid #dddddd;
@@ -92,7 +98,7 @@
 }
 .content_cellView{
     background-color: white;
-    width: 17.5rem;
+    width: 87%;
     /*min-height: 20rem;*/
     margin-top: -5rem;
     margin-left: 2rem;
@@ -125,7 +131,7 @@
     /*margin-bottom: 2rem;*/
 
     padding:0rem 1rem 0rem;
-
+    white-space:normal;
 }
 
 
@@ -135,7 +141,7 @@
 
 .bottom_gray{
     height: 4rem;
-    width: 17.5rem;
+    width: 87%;
     margin-top: 0;
 
     align-items: center;
@@ -174,7 +180,7 @@
     ;
 }
 .img_item{
-    width:13.5rem;
+    width:100%;
     position: relative;
     
 
@@ -186,4 +192,16 @@
     width: 100%;
     text-align: center;
     line-height: 44px;
+}
+
+.dynamic_btn{
+   
+    width: 3rem;
+    height: 3rem;
+    position:fixed;
+    right:2rem;
+    bottom: 2rem;
+    
+    
+    
 }

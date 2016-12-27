@@ -25,7 +25,8 @@ Page({
     
     // http://www.8848fit.com/microweb/HiFitService.asmx/GetArticleList
     var that = this;
-    netRq.netRequest("GetArticleList", { ArticleTagID: "", uid: "5834", pageno: "1", pagesize: "20", ArticleMenuID: options.ArticleMenuID }, function (data) {
+    netRq.GetUid(function(uid){
+        netRq.netRequest("GetArticleList", { ArticleTagID: "", uid: uid, pageno: "1", pagesize: "20", ArticleMenuID: options.ArticleMenuID }, function (data) {
       for (var i = 0; i < data.data.length; i++) {
         data.data[i].ListPic = netRq.imgURL('article/' + data.data[i].ListPic)
         data.data[i].imgVoice = '../../../images/news/news_voicenormal.imageset/news_voicenormal@2x.png'
@@ -39,6 +40,8 @@ Page({
         obj: data
       })
     })
+    })
+  
 
 
   },
@@ -231,7 +234,8 @@ Page({
   onReachBottom: function (event) {
   
     var that = this
-    var paramMore = { ArticleTagID: "", uid: "5834", pageno: ++pageNo, pagesize: 20, ArticleMenuID: this.data.ArticleMenuID }
+    netRq.GetUid(function(uid){
+       var paramMore = { ArticleTagID: "", uid: uid, pageno: ++pageNo, pagesize: 20, ArticleMenuID: this.data.ArticleMenuID }
     netRq.netRequest('GetArticleList', paramMore, function (obj) {
       // 不能用this 直接调用data 
       
@@ -254,6 +258,9 @@ Page({
         
       });
     })
+
+    })
+   
   }
 
 })
