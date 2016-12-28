@@ -176,3 +176,45 @@ outline:none;}
 .wx-input_aN3YXL:focus{text-align: left; width: 16rem; transform: rotate(0deg) scale(1) translate(0%, 0%); transition: all 0.3s ease; }
 .wx-navigator_n3vQYd:active{transform: rotate(0deg) scale(0.98) translate(0%, 0%); transition: all 0s ease;}
 
+.dynamic_btn{
+   
+    width: 3rem;
+    height: 3rem;
+    position:fixed;
+    right:1rem;
+    bottom: 1rem;
+    
+    
+    
+}
+
+.image_dynamic_btn{
+    width: 3rem;
+    height: 3rem;
+    position:absolute;
+    left:0rem;
+    top: 0rem;
+}
+.small_dynamic{
+    width: 2.5rem;
+    height: 2.5rem;
+    left:0.25rem;
+    top: 0.25rem;
+    /*left:0.5rem;
+    top: 0.5rem;*/
+    background-color:#075ba4;
+    font-size:12px;
+    color:white;
+    text-align: center;
+    line-height: 2.5rem;
+    border-radius:50%;
+
+
+}
+.articleBG{
+    width: 100%;
+    height:120px;
+    background-size: 100% 120px;
+    background-position: center center;
+    background-origin:initial;
+}

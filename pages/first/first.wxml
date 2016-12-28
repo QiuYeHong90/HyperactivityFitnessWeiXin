@@ -1,117 +1,101 @@
+
 <!--pages/first/first.wxml-->
 <view class="topic_scrollView" scroll-y="{{true}}" bindscrolltolower="toLower">
-    <view class="Type_1" >
-        <block wx:for="{{dataA}}">
-        <!--http://www.8848fit.com/microweb/file/dynamic/2.jpg-->
-        <!--type==1 的标签-->
-            <view wx:if="{{item.Type==1}}" class="item_type1" style="background-image: url('{{baseDomain}}/file/{{item.Img}}') ">  
-            
-            <text class="text_type1">#{{item.DynamicTagName}}#</text>
-            
-            </view >
-        
+  <view class="Type_1">
+    <block wx:for="{{dataA}}">
 
-        </block>
-       
+      <!--http://www.8848fit.com/microweb/file/dynamic/2.jpg-->
 
-
-    </view>
-    <!--typetype==2 的标签容器-->
-    <view class="Type_1 Type_2">
-        <view  class=" item_type-1 ">
-        <text class="text_type1 text_type-1">动态</text>
-        </view>
-        <block wx:for="{{dataA}}">
-             
-            <view wx:if="{{item.Type==2}}" class="item_type1 item_type2">
-            
-            
-            <text class="text_type1 text_type-1" wx:if="{{index%2 !==0}}">#{{item.DynamicTagName}}#</text>
-            <text class="text_type1 text_type-1" wx:if="{{index%2==0}}" style = "border-right: 1px solid #dddddd;">#{{item.DynamicTagName}}#</text>
-            </view>
-
-
-         </block>
-    
-    </view>
-    
-    <!--动态-->
-    <block wx:for="{{dataDynamicList}}" wx:for-index="idx" >
-    
-     <view class="dynamic_cell">
-        <image src="{{baseDomain}}file/{{item.HeadImg}}" class = "dynamic_cell_userimg"></image>
-        <view class= "content_cellView">
-            <text class="text_content userName_text">{{item.NickName}}</text>
-            <text class="text_content time_text">{{item.CreateTime}}</text>
-            <!--dynamic_addressicon 地理位置--> 
-            <view class="time_text District_text ">
-            <text >{{item.District}}</text>
-            </view>
-            
-            <view class="contentView_gray" >
-           
-                <!--照片内容-->
-                <view class="imgContent">
-                <!--wx:key for循环的时候必须有 -->
-
-
-                    <block  wx:for="{{item.listImg}}" wx:key="{{ImageID}}" wx:for-itemitem="dataList" >
-
-                    
-                    <!--动态高度计算-->
-                    <!--http://v.8848fit.com/file/dynamic/5c3e78b3-ecc0-4684-b1d3-7e9b2ebe77de-->
-                    <image src="{{baseDomain}}file/{{item.Thumbnail}}" mode="scaleToFill" class="img_item"  data-hi="{{idx}}" bindload="loadImgOver" style="height:{{dataDynamicList[idx].imgCount==1?item.scaleImg*16.5:4}}rem; width:{{dataDynamicList[idx].imgCount==1? 16.5:4}}rem; margin-left:{{index%3!=0? 2:0}}px" bindtap="imgTap" data-index="{{index}}" data-listIndex="{{idx}}"> </image>
-                    </block>
-                    
-                    <video src="{{item.VideoUrl}}" wx:if="{{item.VideoUrl!==''}}">
-
-                    </video>
-
-
-
-
-                </view>
-                 <!--标签-->
-                <view style="margin-top:1rem">
-                <image src="../../images/circle_tag@3x.png" class="contentItem" style="width:0.8rem; height:0.8rem; "></image>
-                <text style="font-size:0.8rem " >{{item.DynamicTagName}}</text>
-                </view>
-                <!--文字内容-->
-                <text class="content_text">
-                {{item.DynamicInfo}}
-                </text>
-            </view>
-
-           
-
-        </view>
-
-         <!--评论 点赞 分型-->
-            <view class="contentView_gray bottom_gray">
-               <view class = "pinglun"> <image src="../../images/dynamic/dynamic_priaseselected.imageset/dynamic_priaseselected@3x.png" style="width:1rem;height:1rem;" ></image>
-                <text class= "pinglunText">1</text> </view> 
-               <view class = "pinglun">  <image src="../../images/dynamic/dynamic_comment.imageset/dynamic_comment@3x.png" style="width:1rem;height:1rem;" ></image>
-               <text class= "pinglunText">评论</text> </view> 
-               <view class = "pinglun">  <image src="../../images/dynamic/dynamic_share.imageset/dynamic_share@3x.png" style="width:1rem;height:1rem;" ></image>
-               <text class= "pinglunText">分享</text> </view> 
-            </view>
-    
-    </view>
-    
+      <!--type==1 的标签-->
+      <view wx:if="{{item.Type==1}}" class="item_type1" style="background-image: url('{{baseDomain}}/file/{{item.Img}}') ">
+        <text class="text_type1">#{{item.DynamicTagName}}#</text>
+      </view>
     </block>
+  </view>
 
-   <!--<view class="loadmore" bindtap="loadmore">
+  <!--typetype==2 的标签容器-->
+  <view class="Type_1 Type_2">
+    <view class=" item_type-1 ">
+      <text class="text_type1 text_type-1">动态</text>
+    </view>
+    <block wx:for="{{dataA}}">
+      <view wx:if="{{item.Type==2}}" class="item_type1 item_type2">
+        <text class="text_type1 text_type-1" wx:if="{{index%2 !==0}}">#{{item.DynamicTagName}}#</text>
+        <text class="text_type1 text_type-1" wx:if="{{index%2==0}}" style="border-right: 1px solid #dddddd;">#{{item.DynamicTagName}}#</text>
+      </view>
+    </block>
+  </view>
+
+  <!--动态-->
+  <block wx:for="{{dataDynamicList}}" wx:for-index="idx">
+    <view class="dynamic_cell">
+      <image src="{{baseDomain}}file/{{item.HeadImg}}" class="dynamic_cell_userimg"></image>
+      <view class="content_cellView">
+        <text class="text_content userName_text">{{item.NickName}}</text>
+        <text class="text_content time_text">{{item.CreateTime}}</text>
+
+        <!--dynamic_addressicon 地理位置-->
+        <view class="time_text District_text ">
+          <text>{{item.District}}</text>
+        </view>
+        <view class="contentView_gray">
+
+          <!--照片内容-->
+          <view class="imgContent">
+
+            <!--wx:key for循环的时候必须有 -->
+            <block wx:for="{{item.listImg}}" wx:key="{{ImageID}}" >
+
+              <!--动态高度计算-->
+
+              <!--http://v.8848fit.com/file/dynamic/5c3e78b3-ecc0-4684-b1d3-7e9b2ebe77de-->
+              <image src="{{baseDomain}}file/{{item.Thumbnail}}" mode="scaleToFill" class="img_item" data-hi="{{idx}}" bindload="loadImgOver" style="height:{{dataDynamicList[idx].imgCount==1?item.scaleImg*16.5:4}}rem; width:{{dataDynamicList[idx].imgCount==1? 16.5:4}}rem; margin-left:{{index%3!=0? 2:0}}px"
+              bindtap="imgTap" data-index="{{index}}" data-listIndex="{{idx}}"> </image>
+            </block>
+            <video src="{{item.VideoUrl}}" wx:if="{{item.VideoUrl!==''}}">
+            </video>
+          </view>
+
+          <!--标签-->
+          <view style="margin-top:1rem">
+            <image src="../../images/circle_tag@3x.png" class="contentItem" style="width:0.8rem; height:0.8rem; "></image>
+            <text style="font-size:0.8rem ">{{item.DynamicTagName}}</text>
+            <text style="color:#0eaaed;font-size:0.8rem;margin-left:1rem;border:1px solid #0eaaed;padding:2px 5px;border-radious:2px" wx:if="{{uid==dataDynamicList[idx].uid}}" bindtap="DeleteDynamicTap" data-index="{{idx}}">删除</text>
+          </view>
+
+          <!--文字内容-->
+          <text class="content_text">
+            {{item.DynamicInfo}}
+          </text>
+        </view>
+      </view>
+
+      <!--评论 点赞 分型-->
+      <view class="contentView_gray bottom_gray">
+        <view class="pinglun">
+          <image src="../../images/dynamic/dynamic_priaseselected.imageset/dynamic_priaseselected@3x.png" style="width:1rem;height:1rem;"></image>
+          <text class="pinglunText">1</text>
+        </view>
+        <view class="pinglun">
+          <image src="../../images/dynamic/dynamic_comment.imageset/dynamic_comment@3x.png" style="width:1rem;height:1rem;"></image>
+          <text class="pinglunText">评论</text>
+        </view>
+        <view class="pinglun">
+          <image src="../../images/dynamic/dynamic_share.imageset/dynamic_share@3x.png" style="width:1rem;height:1rem;"></image>
+          <text class="pinglunText">分享</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!--<view class="loadmore" bindtap="loadmore">
     <text>加载更多</text>
    </view>-->
-
-    
-
-
 </view>
-<image src="../../images/dynamic/circle_adddynamic@3x.png" class="dynamic_btn" bindtap="publishDy">
 
 
-</image>
 
-
+<import src="../../common/common.wxml"/>
+<template is="BallBall" data="{{dataArray:dataArray,animationData:animationData,imgUrl:imgUrl}}">
+</template>
 

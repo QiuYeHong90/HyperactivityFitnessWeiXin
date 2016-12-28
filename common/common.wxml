@@ -1,0 +1,11 @@
+<template name="BallBall" >
+  <view class="dynamic_btn" >
+  <block wx:for="{{dataArray}}">
+   <view  bindtap="publishDy" class="image_dynamic_btn small_dynamic"  data-idex="{{index+1}}" animation="{{animationData[index]}}" style="background-color:{{item.color}}">
+  {{item.text}}
+  </view>
+  </block>
+   <image src="{{imgUrl}}" bindtap="publishDy" class="image_dynamic_btn" data-idex="0">
+  </image>
+</view>
+</template>

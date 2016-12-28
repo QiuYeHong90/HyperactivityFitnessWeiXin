@@ -66,7 +66,7 @@ exports.netRequest = netRequest;
  * 
  */
 
-function uploadFile(filePath,name,callBack) {
+function uploadFile(filePath, name,Type, callBack) {
   wx.showToast({
     title: '上传中',
     icon: 'loading',
@@ -76,10 +76,10 @@ function uploadFile(filePath,name,callBack) {
   setTimeout(function () {
     wx.hideToast()
   }, 2000)
-  
+
 
   wx.uploadFile({
-    url: util.baseDomain() + 'IOSFile.ashx/'+name,
+    url: util.baseDomain() + 'IOSFile.ashx/' + name,
     filePath: filePath,
     name: 'image',
     header: {
@@ -88,7 +88,7 @@ function uploadFile(filePath,name,callBack) {
     formData: {
       versionno: '2.7.2.0',
       phonetype: "2",
-
+      "Content-Type": "image/jpeg"
     }, // HTTP 请求中其他额外的 form data
     success: function (res) {
       // success
@@ -99,7 +99,7 @@ function uploadFile(filePath,name,callBack) {
     fail: function () {
       // fail
     },
-   
+
   })
 }
 
@@ -110,9 +110,15 @@ exports.uploadFile = uploadFile;
 // http://www.8848fit.com/hifitweb/file/
 function imgURL(img) {
   // return util.baseDomain() + 'file/' + img
-  return util.K_URL_HFIT()+'file/'+img
+  return util.K_URL_HFIT() + 'file/' + img
 }
 exports.imgURL = imgURL;
+// K_URL_MFIT
+function kShareImgUrl(img) {
+  // return util.baseDomain() + 'file/' + img
+  return util.K_URL_MFIT() + 'file/' + img
+}
+exports.kShareImgUrl = kShareImgUrl;
 
 
 /**
@@ -152,7 +158,7 @@ function netPostRequest(name, param, callBack) {
       }
 
       var obj = JSON.parse(str);
-      
+
 
       callBack(obj);
     },
@@ -170,12 +176,26 @@ exports.netPostRequest = netPostRequest;
 
 // 获取uid
 function GetUid(callBack) {
-    wx.getStorage({
-        key: 'userInfor',
-        success: function (res) {
-            callBack(res.data.data.uid)
-        }
-    })
+  wx.getStorage({
+    key: 'userInfor',
+    success: function (res) {
+      callBack(res.data.data.uid)
+    }
+  })
 }
 
-exports.GetUid=GetUid
+exports.GetUid = GetUid
+
+function showModel(title,content,callBack) {
+  wx.showModal({
+    title: title,
+    content: content,
+    success: function (res) {
+      if (res.confirm) {
+        callBack()
+      }
+    }
+  })
+}
+
+exports.showModel = showModel

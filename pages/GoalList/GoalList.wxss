@@ -1,0 +1,29 @@
+/* pages/GoalList/GoalList.wxss */
+.goalTypeList{
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    display:flex;
+    flex-wrap:wrap;
+    border-bottom: 1px solid #dddddd;
+    justify-content:center;
+}
+.imgView{
+    justify-content:center;
+    align-items: center;
+    display:flex;
+    flex-wrap:wrap;
+    height:100%;width:60px;
+}
+.imgAndPeople{
+    width: 100%;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    justify-content:space-between;
+    display:flex;
+    flex-wrap:wrap;
+    /*background-color: red;*/
+    position:relative;
+    top: -90px;
+}

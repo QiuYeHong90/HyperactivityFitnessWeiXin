@@ -6,13 +6,29 @@ var appInstance = getApp();
 var userID;
 Page({
   data: {
-
+    uid:appInstance.globalData.GetUserInfo==null?null: appInstance.globalData.GetUserInfo.uid,
     dataA: [],
     dataDynamicList: [],
     success: true,
     msg: null,
     scaleImg: 1,
-    baseDomain:util.baseDomain()
+    baseDomain: util.baseDomain(),
+    isOpen: false,
+    animationData: [],
+    dataArray:
+    [{
+      text: "视频",
+      color: "#075ba4"
+    },
+    {
+      text: "相册",
+      color: "chartreuse"
+    },
+    {
+      text: "拍照",
+      color: "#0eaaed"
+    }],
+    imgUrl: "../../images/dynamic/circle_adddynamic@3x.png"
 
   },
   param1: {
@@ -54,49 +70,8 @@ Page({
 
   // 刷新
   onPullDownRefresh: function () {
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 10000
-    })
-
-    setTimeout(function () {
-      wx.hideToast()
-    }, 2000)
-    var that = this;
-    pageNo = 1;
-    var paramRefresh = { phonetype: "2", CircleID: "", versionno: "2.8.0", uid: userID, pagesize: "10", pageno: pageNo };
-    NetRq.netRequest('GetCircleDynamicList', paramRefresh, function (obj) {
-      // 不能用this 直接调用data 
-
-      console.log(obj.data);
-      that.setData({
-        dataDynamicList: obj.data,
-
-        success: obj.success,
-        msg: obj.msg
-      });
-
-      console.log(that.data.dataDynamicList.length);
-      // listImg
-      for (var a = 0; a < that.data.dataDynamicList.length; a++) {
-        var model = that.data.dataDynamicList[a];
-        if (model.listImg) {
-          console.log(model.listImg.length);
-          model.imgCount = model.listImg.length;
-        } else {
-          model.imgCount = 0;
-        }
-
-
-      }
-      that.setData({
-        dataDynamicList: that.data.dataDynamicList
-      });
-      console.log(that.data.dataDynamicList);
-      wx.stopPullDownRefresh();
-
-    })
+    var that = this
+    refresh(that)
   },
 
   // 加载更多
@@ -174,7 +149,7 @@ Page({
     //   });
     var urlArrayImg = [];
     for (var i = 0; i < imgArray.length; i++) {
-      urlArrayImg[i] = that.data.baseDomain+'file/' + imgArray[i].Thumbnail;
+      urlArrayImg[i] = that.data.baseDomain + 'file/' + imgArray[i].Thumbnail;
     }
 
     //展示图片
@@ -193,14 +168,91 @@ Page({
       }
     })
   },
+  // 小球球的动画
+  publishDy: function (res) {
 
-  publishDy: function () {
-    wx.navigateTo({
-      url: '../publishpDyanmic/publishpDyanmic',
-      success: function (res) {
-        // success
+
+
+    this.setData(
+      {
+        isOpen: this.data.isOpen == true ? false : true
       }
+    )
+    var index = parseInt(res.currentTarget.dataset.idex);
+
+    animation(this, this.data.isOpen, index);
+
+
+    if (index == 0) {
+
+    } else if (index == 1) {
+      // 视频
+      wx.navigateTo({
+        url: '../publishpDyanmic/publishpDyanmic?type=video',
+        success: function (res) {
+          // success
+        }
+      })
+    } else if (index == 2) {
+      // 照片
+      wx.navigateTo({
+        url: '../publishpDyanmic/publishpDyanmic?type=image',
+        success: function (res) {
+          // success
+        }
+      })
+    } else if (index == 3) {
+      // 拍照相册
+      wx.chooseImage({
+        count: 9, // 最多可以选择的图片张数，默认9
+        sizeType: ['original', 'compressed'], // original 原图，compressed 压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // album 从相册选图，camera 使用相机，默认二者都有
+        success: function (res) {
+          // success
+          wx.navigateTo({
+            url: '../publishpDyanmic/publishpDyanmic?type=image',
+            success: function (res) {
+              // success
+            }
+          })
+        }
+      })
+    }
+
+
+
+
+  },
+  /**
+   * 删除动态点击事件
+   */
+  DeleteDynamicTap: function (res) {
+    // index
+    var index = res.currentTarget.dataset.index;
+    var that = this
+    var DynamicID = that.data.dataDynamicList[index].DynamicID
+    NetRq.showModel("确定删除么", "", function () {
+      DeleteDynamic(that.data.uid, DynamicID, function (obj) {
+        console.log(obj)
+        if (obj.success == true) {
+
+          var dataArr = that.data.dataDynamicList
+          dataArr.splice(index,1) 
+
+          that.setData({
+            dataDynamicList: dataArr
+          })
+
+        }
+      })
     })
+
+
+
+
+
+
+
   }
 
 
@@ -263,4 +315,124 @@ function pageNetReq(uid, that) {
 
 
 
+}
+
+// 动画的方法
+function animation(that, isOpen, index) {
+  var animation1 = wx.createAnimation({
+    duration: 100,
+    timingFunction: 'linear', // "linear","ease","ease-in","ease-in-out","ease-out","step-start","step-end"
+    delay: 0,
+    transformOrigin: '50% 50% 0',
+    success: function (res) {
+      // function code
+    }
+  })
+  var animation2 = wx.createAnimation({
+    duration: 200,
+    timingFunction: 'ease-in-out', // "linear","ease","ease-in","ease-in-out","ease-out","step-start","step-end"
+    delay: 0,
+    transformOrigin: '50% 50% 0',
+    success: function (res) {
+      // function code
+    }
+  })
+
+  var animation3 = wx.createAnimation({
+    duration: 300,
+    timingFunction: 'ease-in-out', // "linear","ease","ease-in","ease-in-out","ease-out","step-start","step-end"
+    delay: 0,
+    transformOrigin: '50% 50% 0',
+    success: function (res) {
+      // function code
+    }
+  })
+  if (isOpen == true) {
+
+    animation1.translate(5, -80).step()
+
+
+    animation2.translate(-50, -50).step()
+
+
+    animation3.translate(-80, 5).step()
+
+  } else {
+    animation1.translate(0, 0).step()
+
+
+    animation2.translate(0, 0).step()
+
+
+    animation3.translate(0, 0).step()
+  }
+  var listArr = [animation1.export(), animation2.export(), animation3.export()]
+
+  that.setData({
+    animationData: listArr
+  })
+}
+
+
+// 删除动态
+function DeleteDynamic(uid, DynamicID, callBack) {
+  var param = {
+    uid: uid,
+    Reason: "",
+    phonetype: "2",
+    versionno: "2.7.2.0",
+    DynamicID: DynamicID
+  }
+  NetRq.netRequest("DeleteDynamic", param, function (obj) {
+    callBack(obj)
+  })
+}
+
+/**
+ * 刷新接口
+ */
+function refresh(that) {
+  wx.showToast({
+    title: '加载中',
+    icon: 'loading',
+    duration: 10000
+  })
+
+  setTimeout(function () {
+    wx.hideToast()
+  }, 2000)
+  // var that = this;
+  pageNo = 1;
+  var paramRefresh = { phonetype: "2", CircleID: "", versionno: "2.8.0", uid: userID, pagesize: "10", pageno: pageNo };
+  NetRq.netRequest('GetCircleDynamicList', paramRefresh, function (obj) {
+    // 不能用this 直接调用data 
+
+    console.log(obj.data);
+    that.setData({
+      dataDynamicList: obj.data,
+
+      success: obj.success,
+      msg: obj.msg
+    });
+
+    console.log(that.data.dataDynamicList.length);
+    // listImg
+    for (var a = 0; a < that.data.dataDynamicList.length; a++) {
+      var model = that.data.dataDynamicList[a];
+      if (model.listImg) {
+        console.log(model.listImg.length);
+        model.imgCount = model.listImg.length;
+      } else {
+        model.imgCount = 0;
+      }
+
+
+    }
+    that.setData({
+      dataDynamicList: that.data.dataDynamicList
+    });
+    console.log(that.data.dataDynamicList);
+    wx.stopPullDownRefresh();
+
+  })
 }

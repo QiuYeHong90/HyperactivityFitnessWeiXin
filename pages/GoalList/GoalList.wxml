@@ -1,0 +1,15 @@
+
+<!--pages/GoalList/GoalList.wxml-->
+<block wx:for="{{dataGoalList}}">
+  <navigator url="" class="goalTypeList">
+    <view style="color:#333333">{{item.GoalName}}</view>
+    <view class="imgAndPeople">
+      <view class="imgView">
+        <image src="" style="width:30px;height:30px;background-color:red;left:5px"></image>
+      </view>
+      <view class="imgView">
+        <view style="color:#333333;font-size:12px">{{item.People}}人</view>
+      </view>
+    </view>
+  </navigator>
+</block>

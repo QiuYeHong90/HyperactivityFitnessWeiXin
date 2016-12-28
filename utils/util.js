@@ -16,13 +16,13 @@ function formatNumber(n) {
   console.log(n[1],n[1] ? n : '0' + n)
   return n[1] ? n : '0' + n
 }
-// 1测试 
+// 1测试 2局域网测试 其他为测试服
 
-var AppVersion =  3 
+var AppVersion =  3
 var baseDomain  = "http://54.222.163.123:8008/" //测试
 var basePath    ="HiFitService.asmx/"     //测试
 // var K_URL_HFIT ="http://54.222.163.123:8002/"  //测试
-var K_URL_MFIT ="http://54.222.163.123:8008/"  //测试
+// var K_URL_MFIT ="http://54.222.163.123:8008/"  //测试
 
 // #define baseDomain  @"http://192.168.1.16:8008/"//测试(局域网)
 // #define basePath    @"HiFitService.asmx"        //测试(局域网)
@@ -85,7 +85,23 @@ function K_URL_HFIT(){
   
   
 }
-
+function K_URL_MFIT(){
+  if(AppVersion==1){  
+    // 外网测试
+    
+    return   "http://54.222.163.123:8008/"
+  }else if (AppVersion==2){
+    // 局域网测试
+    
+    return  "http://192.168.1.16:8008/"
+  }else{
+    // 正式服
+    
+    return  "http://www.8848fit.com/microweb/"
+  }
+  
+  
+}
 
 
 // 获取uid
@@ -104,7 +120,8 @@ module.exports = {
   baseDomain:baseUrl,
   basePath:basePath,
   GetUid:GetUid,
-  K_URL_HFIT:K_URL_HFIT
+  K_URL_HFIT:K_URL_HFIT,
+  K_URL_MFIT:K_URL_MFIT
 }
 // __global.kBaseUrl = kBaseUrl
 

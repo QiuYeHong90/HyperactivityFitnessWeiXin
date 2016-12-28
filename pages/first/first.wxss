@@ -194,14 +194,3 @@
     line-height: 44px;
 }
 
-.dynamic_btn{
-   
-    width: 3rem;
-    height: 3rem;
-    position:fixed;
-    right:2rem;
-    bottom: 2rem;
-    
-    
-    
-}

@@ -6,6 +6,17 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    var that = this
+    var res =  wx.getStorageSync('userInfor')
+    if(res!=null&&res!=undefined){
+      that.globalData.GetUserInfo = res.data
+    }else{
+       wx.redirectTo({
+          url: '../login/login?url=first'
+        })
+    }
+    
+
   },
   onShow: function () {
     console.log('我显示出来了');
@@ -27,7 +38,7 @@ App({
             success: function (res) {
               that.globalData.userInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo)
-              
+
             }
           })
         }
@@ -37,7 +48,8 @@ App({
   globalData: {
     userInfo: null,
     imgArray: [],
-    GetUid: GetUid()
+    GetUserInfo:null
+    
   }
 
 
@@ -47,10 +59,10 @@ App({
 });
 // 获取uid
 function GetUid(callBack) {
-    wx.getStorage({
-        key: 'userInfor',
-        success: function (res) {
-            callBack(res.data.data.uid)
-        }
-    })
+  wx.getStorage({
+    key: 'userInfor',
+    success: function (res) {
+      callBack(res.data.data.uid)
+    }
+  })
 }

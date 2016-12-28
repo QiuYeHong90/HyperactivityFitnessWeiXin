@@ -62,7 +62,7 @@ Page({
         var that = this;
         var content = dat.detail.value.input
 
-        if (that.data.imgList[0] !== undefined) {
+        if (that.data.isVideo!=true) {
             NetRq.uploadFile(that.data.imgList[0], 'image', function (fileName) {
                 console.log(fileName)
                 GetUid(function (uid) {

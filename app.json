@@ -11,7 +11,10 @@
         "pages/second/articleDetail/articleDetail",
         "pages/login/login",
         "pages/index/userCenterDetail/userCenterDetail",
-        "pages/publishpDyanmic/publishpDyanmic"
+        "pages/publishpDyanmic/publishpDyanmic",
+        "pages/GoalClassList/GoalClassList",
+        "pages/TrainList/TrainList",
+        "pages/GoalList/GoalList"
 
     ],
     "window": {

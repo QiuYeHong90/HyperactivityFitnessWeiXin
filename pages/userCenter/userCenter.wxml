@@ -195,7 +195,9 @@
 
 </view>
 
-
+<import src="../../common/common.wxml"/>
+<template is="BallBall" data="{{dataArray:dataArray,animationData:animationData,imgUrl:imgUrl}}">
+</template>
 
 
 

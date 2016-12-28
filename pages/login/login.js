@@ -70,12 +70,14 @@ Page({
 
 
       if (res.success == true) {
-
+        var app = getApp()
+        app.globalData.GetUserInfo= res
         wx.setStorage({
           key: 'userInfor',
           data: res,
           success: function (obj) {
             // success
+
             wx.showToast({
               title: '成功',
               icon: 'success',

@@ -1,0 +1,16 @@
+/* pages/GoalClassList/GoalClassList.wxss */
+
+.goalTypeList{
+    line-height: 120px;
+    text-align: center;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.bottomText{
+    position:relative;
+    right: 5px;
+    top: -30px;
+    text-align:right;
+
+}

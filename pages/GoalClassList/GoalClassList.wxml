@@ -1,0 +1,13 @@
+
+<!--pages/GoalClassList/GoalClassList.wxml-->
+
+  <block wx:for="{{dataGoalList}}">
+   
+    <navigator url="../GoalList/GoalList?GoalTypeID={{item.GoalTypeID}}">
+      <view style="background-image: url({{item.Img}})  " class="articleBG goalTypeList">
+      <view style="color:white">{{item.TypeName}}</view>
+      
+      </view>
+      <view style="color:white" class="bottomText">{{item.People}}人</view>
+    </navigator>
+  </block>
